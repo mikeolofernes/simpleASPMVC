@@ -1,0 +1,46 @@
+﻿@model Time_Tracking.Models.Users
+@{
+    ViewBag.Title = "Login";
+    Layout = null;
+}
+
+@using (Html.BeginForm("Login", "Login", FormMethod.Post))
+{
+    <fieldset>
+        <legend>Login</legend>
+
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        @if (@ViewBag.Message != null)
+        {
+            <div style="border: 1px solid red">
+                @ViewBag.Message
+            </div>
+        }
+        <table>
+            <tr>
+                <td>@Html.LabelFor(a => a.username)</td>
+                <td>@Html.TextBoxFor(a => a.username)</td>
+                <td>@Html.ValidationMessageFor(a => a.username)</td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(a => a.pword)
+                </td>
+                <td>
+                    @Html.PasswordFor(a => a.pword)
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(a => a.pword)
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" value="Login" />
+                </td>
+                <td></td>
+            </tr>
+        </table>
+    </fieldset>
+}  
